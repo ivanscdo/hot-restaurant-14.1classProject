@@ -4,6 +4,8 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var path = require("path");
 
+var waitlist = require("./app/routing/waitlist-apiRoutes");
+
 // Sets up the Express App
 // =============================================================
 var app = express();
@@ -48,6 +50,10 @@ app.post("/api/reservations", function(req, res) {
 });
 
 //create waitlist - use slice (5, reservations.length)
+
+// app.post("/api/waitlist", waitlist.apiWaitlist);
+app.get("/api/waitlist", waitlist.apiWaitlist);
+
 
 // Starts the server to begin listening
 // =============================================================
