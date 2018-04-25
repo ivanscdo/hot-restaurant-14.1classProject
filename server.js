@@ -48,13 +48,19 @@ app.post("/api/reservations", function(req, res) {
 
   // Using a RegEx Pattern to remove spaces from newCharacter
   // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
-  newReservation.Name = newReservation.name.replace(/\s+/g, "").toLowerCase();
+  newReservation.name = newReservation.name.replace(/\s+/g, "").toLowerCase();
 
-  console.log(newReservation.slice(0,4));
+//   console.log(newReservation.slice(0,4));
+console.log(newReservation);
 
-  reservations.push(newReservation.slice(0,4));
 
-  res.json(newReservation.slice(0,4));
+//   reservations.push(newReservation.slice(0,4));
+reservations.push(newReservation);
+
+
+//   res.json(newReservation.slice(0,4));
+res.json(newReservation);
+
 });
 
 //create waitlist - use slice (5, reservations.length)
