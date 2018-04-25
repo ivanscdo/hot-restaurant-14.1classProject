@@ -14,6 +14,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 
+<<<<<<< HEAD
 var reservations = [{
   name: "Amy",
   phone: 1234,
@@ -21,12 +22,19 @@ var reservations = [{
   unique: "amys"
 
 }];
+=======
+var reservations = [];
+>>>>>>> 5b65f82d86afa5cc8547d668d72b516eae01caa9
 // Routes
 // =============================================================
 
 // Basic route that sends the user first to the AJAX Page
 app.get("/", function(req, res) {
+<<<<<<< HEAD
   res.sendFile(path.join(__dirname, "home.html"));
+=======
+  res.sendFile(path.join(__dirname, "view.html"));
+>>>>>>> 5b65f82d86afa5cc8547d668d72b516eae01caa9
 });
 
 app.get("/add", function(req, res) {
@@ -54,6 +62,7 @@ app.post("/api/reservations", function(req, res) {
 });
 
 //create waitlist - use slice (5, reservations.length)
+<<<<<<< HEAD
 app.post("/api/waitlist", function(req, res) {
   // req.body hosts is equal to the JSON post sent from the user
   // This works because of our body-parser middleware
@@ -69,6 +78,9 @@ app.post("/api/waitlist", function(req, res) {
 
   res.json(waitlist.slice(5, reservations.length));
 });
+=======
+
+>>>>>>> 5b65f82d86afa5cc8547d668d72b516eae01caa9
 // Starts the server to begin listening
 // =============================================================
 app.listen(PORT, function() {
