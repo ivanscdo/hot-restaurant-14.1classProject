@@ -4,8 +4,6 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var path = require("path");
 
-var waitlist = require("./app/routing/waitlist-apiRoutes");
-
 // Sets up the Express App
 // =============================================================
 var app = express();
@@ -16,12 +14,19 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 
-var reservations = [];
+var reservations = [{
+  name: "Amy",
+  phone: 1234,
+  email: "astwefs",
+  unique: "amys"
+
+}];
 // Routes
 // =============================================================
 
 // Basic route that sends the user first to the AJAX Page
 app.get("/", function(req, res) {
+
   res.sendFile(path.join(__dirname, "/Public/home.html"));
 });
 
@@ -50,11 +55,21 @@ app.post("/api/reservations", function(req, res) {
 });
 
 //create waitlist - use slice (5, reservations.length)
+app.post("/api/waitlist", function(req, res) {
+  // req.body hosts is equal to the JSON post sent from the user
+  // This works because of our body-parser middleware
+  var waitlist = req.body;
 
-// app.post("/api/waitlist", waitlist.apiWaitlist);
-app.get("/api/waitlist", waitlist.apiWaitlist);
+  // Using a RegEx Pattern to remove spaces from newCharacter
+  // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
+  waitlist.Name = waitlist.name.replace(/\s+/g, "").toLowerCase();
 
+  console.log(waitlist.slice(5, reservations.length));
 
+  reservations.push(waitlist.slice(5, reservations.length));
+
+  res.json(waitlist.slice(5, reservations.length));
+});
 // Starts the server to begin listening
 // =============================================================
 app.listen(PORT, function() {
