@@ -31,23 +31,23 @@
         <form method="POST" role="form">
 
             <div class="form-group">
-                <label for"NAME">Name</label>
+                <label for"name">Name</label>
                 <input type="text" class="form-control" id="name">
                 </div>
                         
                    <div class="form-group">
-                    <label for"NAME">Phone Number</label>
+                    <label for"phone">Phone Number</label>
                   <input type="text" class="form-control" id="phone">
                        </div> 
                                 
                                 
                 <div class="form-group">
-                  <label for"NAME">Email</label>
+                  <label for"email">Email</label>
                     <input type="text" class="form-control" id="email">
                        </div>
 
                        <div class="form-group">
-                            <label for"NAME">Unique ID</label>
+                            <label for"uniqueID">Unique ID</label>
                              <input type="text" class="form-control" id="uniqueID">
                              </div> 
                                     
@@ -63,5 +63,30 @@
         </div>
             </div>
                 </div>
+
+    <script type="text/javascript">
+        // Question: What does this code do?
+        $("#add-btn").on("click", function(event) {
+            event.preventDefault();
+            var newReservation = {
+            name: $("#name").val().trim(),
+            phone: $("#phone").val().trim(),
+            email: $("#email").val().trim(),
+            uniqueID: $("#uniqueID").val().trim()
+            };
+
+            // console.log(newReservation);
+    
+            // Question: What does this code do??
+            $.post("/api/reservations", newReservation)
+            .then(function(data) {
+                console.log("add.html", data);
+                alert("Adding reservation...");
+            });
+        });
+    </script>
+
+
+
 </body>
 </html>
