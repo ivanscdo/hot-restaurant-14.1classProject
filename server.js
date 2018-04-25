@@ -18,7 +18,7 @@ var reservations = [{
   name: "Amy",
   phone: 1234,
   email: "astwefs",
-  unique: "amys"
+  uniqueID: "amys"
 
 }];
 // Routes
