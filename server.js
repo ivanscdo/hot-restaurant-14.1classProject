@@ -18,7 +18,7 @@ var reservations = [{
   name: "Amy",
   phone: 1234,
   email: "astwefs",
-  unique: "amys"
+  uniqueID: "amys"
 
 }];
 // Routes
@@ -34,6 +34,9 @@ app.get("/add", function(req, res) {
   res.sendFile(path.join(__dirname, "add.html"));
 });
 
+app.get("/api/reservations", function(req, res) {
+    return res.json(reservations);
+  });
 
 
 
