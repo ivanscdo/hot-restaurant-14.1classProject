@@ -1,5 +1,5 @@
 {
-  "name": "hot-restaurant-14.1classproject",
+  "name": "hot-restaurant-14.1classProject",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,10 +10,16 @@
     "type": "git",
     "url": "git+https://github.com/ivanscdo/hot-restaurant-14.1classProject.git"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/ivanscdo/hot-restaurant-14.1classProject/issues"
   },
-  "homepage": "https://github.com/ivanscdo/hot-restaurant-14.1classProject#readme"
+  "homepage": "https://github.com/ivanscdo/hot-restaurant-14.1classProject#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "path": "^0.12.7"
+  }
 }
