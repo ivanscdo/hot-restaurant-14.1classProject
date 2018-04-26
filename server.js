@@ -21,6 +21,19 @@ var reservations = [{
   unique: "amys"
 
 }];
+
+// var waitlist = [{
+//     name: "AmyWAIT",
+//     phone: 567,
+//     email: "astwefsWAIT",
+//     unique: "amysWAIT"
+  
+//   }];
+
+// var waitlist = reservations.slice(5, reservations.length);
+var waitlist = [];
+
+
 // Routes
 // =============================================================
 
@@ -38,6 +51,9 @@ app.get("/api/reservations", function(req, res) {
     return res.json(reservations);
   });
 
+  app.get("/api/waitlist", function(req, res) {
+    return res.json(waitlist);
+  });
 
 
 // Create New Reservations - takes in JSON input
@@ -55,7 +71,15 @@ console.log(newReservation);
 
 
 //   reservations.push(newReservation.slice(0,4));
-reservations.push(newReservation);
+// reservations.push(newReservation);
+
+if (reservations.length <= 5) {
+    // waitlist.push(reservations.slice(5, reservations.length));
+    reservations.push(newReservation);
+} else {
+    waitlist.push(newReservation);
+}
+
 
 
 //   res.json(newReservation.slice(0,4));
@@ -67,17 +91,25 @@ res.json(newReservation);
 app.post("/api/waitlist", function(req, res) {
   // req.body hosts is equal to the JSON post sent from the user
   // This works because of our body-parser middleware
-  var waitlist = req.body;
+//   var newWaitlist = req.body;
 
-  // Using a RegEx Pattern to remove spaces from newCharacter
-  // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
-  waitlist.Name = waitlist.name.replace(/\s+/g, "").toLowerCase();
+//   // Using a RegEx Pattern to remove spaces from newCharacter
+//   // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
+//   newWaitlist.name = newWaitlist.name.replace(/\s+/g, "").toLowerCase();
 
-  console.log(waitlist.slice(5, reservations.length));
+// //   console.log(waitlist.slice(5, reservations.length));
+//   console.log(reservations.slice(5, reservations.length));
 
-  reservations.push(waitlist.slice(5, reservations.length));
 
-  res.json(waitlist.slice(5, reservations.length));
+
+// //   reservations.push(waitlist.slice(5, reservations.length));
+//   waitlist.push(reservations.slice(5, reservations.length));
+
+
+
+//   res.json(waitlist.slice(5, reservations.length));
+  res.json(waitlist);
+
 });
 // Starts the server to begin listening
 // =============================================================
